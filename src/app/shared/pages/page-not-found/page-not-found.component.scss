@@ -1,0 +1,21 @@
+@import '../../../../scss/constants';
+
+#page-not-found {
+    background-color: $primary-color;
+    height: 100vh;
+    .container {    
+        gap: 25px;
+        .not-found-img {
+            width: 300px;
+            max-width: 100%;
+        }
+        .title {
+            color: $secondary-color;
+            font-weight: $bold-weight;
+        }
+        .subtitle {
+            color: $secondary-color;
+            font-weight: $medium-weight;
+        }
+    }
+}
