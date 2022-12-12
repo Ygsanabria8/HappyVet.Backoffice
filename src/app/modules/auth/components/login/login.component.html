@@ -11,15 +11,21 @@
     <div class="d-flex justify-content-center alig-items-center col-12 col-sm-12 col-md-12 col-lg-7 col-xl-7 col-xxl-7 p-3">
         <div class="d-flex flex-column justify-content-center alig-items-center form">
             <p class="text-center mb-5 title">Bienvenido a Happy Vet</p>
-            <form class="d-flex flex-column justify-content-center alig-items-center mb-3">
+            <form class="d-flex flex-column justify-content-center alig-items-center mb-5">
                 <div class="input-group input-group mb-3">
                     <i class="bi bi-envelope input-group-text"></i>
-                    <input type="text" class="form-control">
+                    <input type="text" placeholder="Correo electrónico" class="form-control">
                 </div>
-                <div class="input-group input-group mb-3">
+                <div class="input-group input-group mb-1">
                     <i class="bi bi-shield-lock input-group-text"></i>
-                    <input type="password" class="form-control">
+                    <input type="password" placeholder="Contraseña" class="form-control">
                 </div>
+                <p 
+                    class="text-left mb-0 forgot"
+                    [routerLink]="'../forgot-password'"
+                >
+                    <a>¿Has olvidado tu contraseña?</a>
+                </p>
             </form>
             <app-primary-button
                 class="mb-3"
@@ -27,7 +33,12 @@
                 (click)="login()"
             >
             </app-primary-button>
-            <p class="text-center mb-0 forgot">¿Has olvidado tu contraseña?</p>
+            <p 
+                class="text-center mb-0 forgot"
+                [routerLink]="'../register'"
+            >
+                ¿Aún no tienes una cuenta? <a>Créala aquí</a>
+            </p>
         </div>
     </div>
 </div>

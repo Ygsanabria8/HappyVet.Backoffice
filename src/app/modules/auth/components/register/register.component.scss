@@ -1,0 +1,35 @@
+@import '../../../../../scss/constants';
+
+#login {
+    height: 100%;
+    .logo {
+        background-color: $primary-color;
+        &-img {
+            max-width: 300px;
+        }
+        .title {
+            font-size: 50px;
+            font-weight: $xbold-weight;
+            color: $third-color;
+        }
+    }
+    .form {
+        width: 100%;
+        max-width: 500px;
+        p {
+            font-size: $font-size-extra-large;
+            font-weight: $bold-weight;
+            color: $secondary-color;
+        }
+        .forgot {
+            font-size: $font-size-small;
+            font-weight: $light-weight;
+            color: $secondary-color;
+            a {
+                cursor: pointer;
+                text-decoration: none;
+                color: $secondary-color;
+            }
+        }
+    }
+}
