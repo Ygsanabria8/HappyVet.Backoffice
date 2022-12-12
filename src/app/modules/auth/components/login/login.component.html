@@ -1,10 +1,33 @@
-<div class="d-flex flex-row">
-    <div>
-        
+<div id="login" class="d-flex flex-row">
+    <div class="d-flex justify-content-center align-items-center col-0 col-sm-0 col-md-0 col-lg-5 col-xl-5 col-xxl-5 logo"> 
+        <div class="d-none d-lg-block d-xl-block d-xxl-block">
+            <div class="d-flex flex-column justify-content-center alig-items-center">
+                <img class="img-fluid logo-img" src="assets/images/logo.png" alt="Logo Happy Vet">
+                <!-- <a href="https://www.flaticon.es/iconos-gratis/veterinario" title="veterinario iconos">Veterinario iconos creados por Smashicons - Flaticon</a> -->
+                <p class="text-center mb-0 title">Happy Vet</p>
+            </div>
+        </div>
     </div>
-    <div>
-        <form>
-            <input type="text">
-        </form>
+    <div class="d-flex justify-content-center alig-items-center col-12 col-sm-12 col-md-12 col-lg-7 col-xl-7 col-xxl-7 p-3">
+        <div class="d-flex flex-column justify-content-center alig-items-center form">
+            <p class="text-center mb-5 title">Bienvenido a Happy Vet</p>
+            <form class="d-flex flex-column justify-content-center alig-items-center mb-3">
+                <div class="input-group input-group mb-3">
+                    <i class="bi bi-envelope input-group-text"></i>
+                    <input type="text" class="form-control">
+                </div>
+                <div class="input-group input-group mb-3">
+                    <i class="bi bi-shield-lock input-group-text"></i>
+                    <input type="password" class="form-control">
+                </div>
+            </form>
+            <app-primary-button
+                class="mb-3"
+                buttonTitle="Iniciar sesion"
+                (click)="login()"
+            >
+            </app-primary-button>
+            <p class="text-center mb-0 forgot">¿Has olvidado tu contraseña?</p>
+        </div>
     </div>
 </div>

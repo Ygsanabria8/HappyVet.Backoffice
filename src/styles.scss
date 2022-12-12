@@ -1,1 +1,11 @@
-/* You can add global styles to this file, and also import other style files */
+@import './scss/constants';
+
+html, body { 
+    height: 100%; 
+    margin: 0px; 
+    padding: 0px; 
+}
+
+p, h1, h2, h3, h4, h5, h6, li {
+    font-family: $font-family-poppins;
+}
