@@ -5,7 +5,12 @@ import { PageNotFoundComponent } from './shared/pages/page-not-found/page-not-fo
 const routes: Routes = [
   {
     path: '',
-    component: PageNotFoundComponent,
+    pathMatch: 'full',
+    redirectTo: 'auth/login',
+  },
+  {
+    path: 'auth',
+    loadChildren: () => import('./modules/auth/auth.module').then(m => m.AuthModule),
   },
   {
     path: 'not-found',
