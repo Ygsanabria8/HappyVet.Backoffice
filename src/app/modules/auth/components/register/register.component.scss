@@ -1,6 +1,6 @@
 @import '../../../../../scss/constants';
 
-#login {
+#register {
     height: 100%;
     .logo {
         background-color: $primary-color;
@@ -21,7 +21,7 @@
             font-weight: $bold-weight;
             color: $secondary-color;
         }
-        .forgot {
+        .login {
             font-size: $font-size-small;
             font-weight: $light-weight;
             color: $secondary-color;
@@ -32,4 +32,19 @@
             }
         }
     }
+    input[type="date"]::-webkit-calendar-picker-indicator {
+        background: transparent;
+        bottom: 0;
+        color: transparent;
+        cursor: pointer;
+        height: auto;
+        left: 0;
+        position: absolute;
+        right: 0;
+        top: 0;
+        width: auto;
+    }
+    input[value="0000-00-00"]::-webkit-datetime-edit {
+        color: transparent; 
+   }
 }

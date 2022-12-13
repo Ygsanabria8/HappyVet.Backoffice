@@ -1,53 +1,212 @@
-<div id="login" class="d-flex flex-row">
-    <div class="d-flex justify-content-center align-items-center col-0 col-sm-0 col-md-0 col-lg-5 col-xl-5 col-xxl-5 logo"> 
-        <div class="d-none d-lg-block d-xl-block d-xxl-block">
-            <div class="d-flex flex-column justify-content-center alig-items-center">
-                <img class="img-fluid logo-img" src="assets/images/logo.png" alt="Logo Happy Vet">
-                <!-- <a href="https://www.flaticon.es/iconos-gratis/veterinario" title="veterinario iconos">Veterinario iconos creados por Smashicons - Flaticon</a> -->
-                <p class="text-center mb-0 title">Happy Vet</p>
+<div id="register" class="d-flex flex-row">
+  <div
+    class="d-flex justify-content-center align-items-center col-0 col-sm-0 col-md-0 col-lg-5 col-xl-5 col-xxl-5 logo"
+  >
+    <div class="d-none d-lg-block d-xl-block d-xxl-block">
+      <div class="d-flex flex-column justify-content-center alig-items-center">
+        <img
+          class="img-fluid logo-img"
+          src="assets/images/logo.png"
+          alt="Logo Happy Vet"
+        />
+        <!-- <a href="https://www.flaticon.es/iconos-gratis/veterinario" title="veterinario iconos">Veterinario iconos creados por Smashicons - Flaticon</a> -->
+        <p class="text-center mb-0 title">Happy Vet</p>
+      </div>
+    </div>
+  </div>
+  <div
+    class="d-flex justify-content-center alig-items-center col-12 col-sm-12 col-md-12 col-lg-7 col-xl-7 col-xxl-7 p-3"
+  >
+    <div
+      class="d-flex flex-column justify-content-center alig-items-center form"
+    >
+      <p class="text-center mb-5 title">Crear cuenta</p>
+      <form
+        [formGroup]="accountForm"
+        class="d-flex flex-column justify-content-center alig-items-center mb-3"
+      >
+        <div class="mb-3">
+          <div class="input-group input-group">
+            <i class="bi bi-person input-group-text"></i>
+            <input
+              formControlName="name"
+              type="text"
+              placeholder="Nombre"
+              class="form-control"
+              [ngClass]="{
+                'is-valid': Name.valid,
+                'is-invalid': Name.invalid && Name.touched
+              }"
+            />
+          </div>
+          <div
+            *ngIf="Name.errors?.['required'] && Name.touched"
+            class="text-danger"
+          >
+            <small>El nombre es requerido</small>
+          </div>
+          <div
+            *ngIf="Name.errors?.['minlength'] && Name.touched"
+            class="text-danger"
+          >
+            <small>El nombre debe tener almenos 3 caracteres</small>
+          </div>
+        </div>
+        <div class="input-group input-group mb-3">
+          <div class="input-group input-group">
+            <i class="bi bi-telephone input-group-text"></i>
+            <input
+              formControlName="phonenumber"
+              type="text"
+              placeholder="Teléfono"
+              class="form-control"
+              [ngClass]="{
+                'is-valid': Phonenumber.valid,
+                'is-invalid': Phonenumber.invalid && Phonenumber.touched
+              }"
+            />
+          </div>
+          <div
+            *ngIf="Phonenumber.errors?.['required'] && Phonenumber.touched"
+            class="text-danger"
+          >
+            <small>El número es requerido</small>
+          </div>
+          <div
+            *ngIf="Phonenumber.errors?.['minlength'] && Phonenumber.touched"
+            class="text-danger"
+          >
+            <small>El número debe tener almenos 6 caracteres</small>
+          </div>
+          <div
+            *ngIf="Phonenumber.errors?.['maxlength'] && Phonenumber.touched"
+            class="text-danger"
+          >
+            <small>El número debe tener menos de 10 caracteres</small>
+          </div>
+        </div>
+        <div class="mb-3">
+          <div class="input-group input-group">
+            <i class="bi bi-calendar2-date input-group-text"></i>
+            <input
+              formControlName="birthday"
+              type="text"
+              placeholder="Fecha de nacimiento"
+              class="form-control"
+              [ngClass]="{
+                'is-valid': Birthday.valid,
+                'is-invalid': Birthday.invalid && Birthday.touched
+              }"
+              onfocus="(this.type='date')"
+              onblur="(this.type='text')"
+            />
+          </div>
+          <div
+            *ngIf="Birthday.errors?.['required'] && Birthday.touched"
+            class="text-danger"
+          >
+            <small>La fecha de nacimiento es requerida</small>
+          </div>
+        </div>
+        <div class="mb-3">
+            <div class="input-group input-group">
+              <i class="bi bi-envelope input-group-text"></i>
+              <input
+                id="email"
+                formControlName="email"
+                [ngClass]="{
+                  'is-valid': Email.valid,
+                  'is-invalid': Email.invalid && Email.touched
+                }"
+                type="text"
+                placeholder="Correo electrónico"
+                class="form-control"
+              />
             </div>
-        </div>
-    </div>
-    <div class="d-flex justify-content-center alig-items-center col-12 col-sm-12 col-md-12 col-lg-7 col-xl-7 col-xxl-7 p-3">
-        <div class="d-flex flex-column justify-content-center alig-items-center form">
-            <p class="text-center mb-5 title">Crear cuenta</p>
-            <form class="d-flex flex-column justify-content-center alig-items-center mb-3">
-                <div class="input-group input-group mb-3">
-                    <i class="bi bi-person input-group-text"></i>
-                    <input type="text" placeholder="Nombre" class="form-control">
-                </div>
-                <div class="input-group input-group mb-3">
-                    <i class="bi bi-telephone input-group-text"></i>
-                    <input type="text" placeholder="Teléfono" class="form-control">
-                </div>
-                <div class="input-group input-group mb-3">
-                    <i class="bi bi-calendar2-date input-group-text"></i>
-                    <input type="text" placeholder="Fecha de nacimiento" class="form-control">
-                </div>
-                <div class="input-group input-group mb-3">
-                    <i class="bi bi-envelope input-group-text"></i>
-                    <input type="text" placeholder="Correo electrónico" class="form-control">
-                </div>
-                <div class="input-group input-group mb-3">
-                    <i class="bi bi-shield-lock input-group-text"></i>
-                    <input type="password" placeholder="Contraseña" class="form-control">
-                </div>
-                <div class="input-group input-group mb-1">
-                    <i class="bi bi-shield-lock input-group-text"></i>
-                    <input type="password" placeholder="Repetir contraseña" class="form-control">
-                </div>
-            </form>
-            <app-primary-button
-                class="mb-3"
-                buttonTitle="Crear cuenta"
+            <div
+              *ngIf="Email.errors?.['required'] && Email.touched"
+              class="text-danger"
             >
-            </app-primary-button>
-            <p 
-                class="text-center mb-0 forgot"
-                [routerLink]="'../login'"
+              <small>El email es requerido</small>
+            </div>
+            <div
+              *ngIf="Email.errors?.['email'] && Email.touched"
+              class="text-danger"
             >
-                <a>Iniciar sesión</a>
-            </p>
-        </div>
+              <small>El email es invalido</small>
+            </div>
+          </div>
+          <div class="mb-3">
+            <div class="input-group input-group">
+              <i class="bi bi-shield-lock input-group-text"></i>
+              <input
+                formControlName="password"
+                [ngClass]="{
+                  'is-valid': Password.valid,
+                  'is-invalid': Password.invalid && Password.touched
+                }"
+                type="password"
+                placeholder="Contraseña"
+                class="form-control"
+              />
+            </div>
+            <div
+              *ngIf="Password.errors?.['required'] && Password.touched"
+              class="text-danger"
+            >
+              <small>La contraseña es requerida</small>
+            </div>
+            <div
+              *ngIf="Password.errors?.['pattern'] && Password.touched"
+              class="text-danger"
+            >
+              <small
+                >La contraseña debe tener almenos 8 caracteres, 1 mayúscula, 1 número y 1
+                caracter especial</small
+              >
+            </div>
+          </div>
+          <div class="mb-3">
+            <div class="input-group input-group">
+              <i class="bi bi-shield-lock input-group-text"></i>
+              <input
+                formControlName="confirmPassword"
+                [ngClass]="{
+                  'is-valid': ConfirmPassword.valid,
+                  'is-invalid': ConfirmPassword.invalid && ConfirmPassword.touched
+                }"
+                type="password"
+                placeholder="Contraseña"
+                class="form-control"
+              />
+            </div>
+            <div
+              *ngIf="ConfirmPassword.errors?.['required'] && ConfirmPassword.touched"
+              class="text-danger"
+            >
+              <small>La contraseña es requerida</small>
+            </div>
+            <div
+              *ngIf="ConfirmPassword.errors?.['pattern'] && ConfirmPassword.touched"
+              class="text-danger"
+            >
+              <small
+                >La contraseña debe tener almenos 8 caracteres, 1 mayúscula, 1 número y 1
+                caracter especial</small
+              >
+            </div>
+          </div>
+      </form>
+      <app-primary-button
+        class="mb-3"
+        buttonTitle="Crear cuenta"
+        [disabled]="accountForm.invalid"
+        (onClick)="createAccount()"
+      >
+      </app-primary-button>
+      <p class="text-center mb-0 login" [routerLink]="'../login'">
+        ¿Ya tienes una cuenta? <a>Inicia sesión aquí</a>
+      </p>
     </div>
+  </div>
 </div>
