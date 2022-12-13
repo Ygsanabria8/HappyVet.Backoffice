@@ -1,44 +1,102 @@
 <div id="login" class="d-flex flex-row">
-    <div class="d-flex justify-content-center align-items-center col-0 col-sm-0 col-md-0 col-lg-5 col-xl-5 col-xxl-5 logo"> 
-        <div class="d-none d-lg-block d-xl-block d-xxl-block">
-            <div class="d-flex flex-column justify-content-center alig-items-center">
-                <img class="img-fluid logo-img" src="assets/images/logo.png" alt="Logo Happy Vet">
-                <!-- <a href="https://www.flaticon.es/iconos-gratis/veterinario" title="veterinario iconos">Veterinario iconos creados por Smashicons - Flaticon</a> -->
-                <p class="text-center mb-0 title">Happy Vet</p>
-            </div>
-        </div>
+  <div
+    class="d-flex justify-content-center align-items-center col-0 col-sm-0 col-md-0 col-lg-5 col-xl-5 col-xxl-5 logo"
+  >
+    <div class="d-none d-lg-block d-xl-block d-xxl-block">
+      <div class="d-flex flex-column justify-content-center alig-items-center">
+        <img
+          class="img-fluid logo-img"
+          src="assets/images/logo.png"
+          alt="Logo Happy Vet"
+        />
+        <!-- <a href="https://www.flaticon.es/iconos-gratis/veterinario" title="veterinario iconos">Veterinario iconos creados por Smashicons - Flaticon</a> -->
+        <p class="text-center mb-0 title">Happy Vet</p>
+      </div>
     </div>
-    <div class="d-flex justify-content-center alig-items-center col-12 col-sm-12 col-md-12 col-lg-7 col-xl-7 col-xxl-7 p-3">
-        <div class="d-flex flex-column justify-content-center alig-items-center form">
-            <p class="text-center mb-5 title">Bienvenido a Happy Vet</p>
-            <form class="d-flex flex-column justify-content-center alig-items-center mb-5">
-                <div class="input-group input-group mb-3">
-                    <i class="bi bi-envelope input-group-text"></i>
-                    <input type="text" placeholder="Correo electrónico" class="form-control">
-                </div>
-                <div class="input-group input-group mb-1">
-                    <i class="bi bi-shield-lock input-group-text"></i>
-                    <input type="password" placeholder="Contraseña" class="form-control">
-                </div>
-                <p 
-                    class="text-left mb-0 forgot"
-                    [routerLink]="'../forgot-password'"
-                >
-                    <a>¿Has olvidado tu contraseña?</a>
-                </p>
-            </form>
-            <app-primary-button
-                class="mb-3"
-                buttonTitle="Iniciar sesion"
-                (click)="login()"
-            >
-            </app-primary-button>
-            <p 
-                class="text-center mb-0 forgot"
-                [routerLink]="'../register'"
-            >
-                ¿Aún no tienes una cuenta? <a>Créala aquí</a>
-            </p>
+  </div>
+  <div
+    class="d-flex justify-content-center alig-items-center col-12 col-sm-12 col-md-12 col-lg-7 col-xl-7 col-xxl-7 p-3"
+  >
+    <div
+      class="d-flex flex-column justify-content-center alig-items-center form"
+    >
+      <p class="text-center mb-5 title">Bienvenido a Happy Vet</p>
+      <form
+        [formGroup]="loginForm"
+        class="d-flex flex-column justify-content-center alig-items-center mb-5"
+      >
+        <div class="mb-3">
+          <div class="input-group input-group">
+            <i class="bi bi-envelope input-group-text"></i>
+            <input
+              id="email"
+              formControlName="email"
+              [ngClass]="{
+                'is-valid': Email.valid,
+                'is-invalid': Email.invalid && Email.touched
+              }"
+              type="text"
+              placeholder="Correo electrónico"
+              class="form-control"
+            />
+          </div>
+          <div
+            *ngIf="Email.errors?.['required'] && Email.touched"
+            class="text-danger"
+          >
+            <small>El email es requerido</small>
+          </div>
+          <div
+            *ngIf="Email.errors?.['email'] && Email.touched"
+            class="text-danger"
+          >
+            <small>El email es invalido</small>
+          </div>
         </div>
+        <div class="mb-1">
+          <div class="input-group input-group">
+            <i class="bi bi-shield-lock input-group-text"></i>
+            <input
+              formControlName="password"
+              [ngClass]="{
+                'is-valid': Password.valid,
+                'is-invalid': Password.invalid && Password.touched
+              }"
+              type="password"
+              placeholder="Contraseña"
+              class="form-control"
+            />
+          </div>
+          <div
+            *ngIf="Password.errors?.['required'] && Password.touched"
+            class="text-danger"
+          >
+            <small>La contraseña es requerida</small>
+          </div>
+          <div
+            *ngIf="Password.errors?.['pattern'] && Password.touched"
+            class="text-danger"
+          >
+            <small
+              >La contraseña debe tener almenos 8 caracteres, 1 mayúscula, 1 número y 1
+              caracter especial</small
+            >
+          </div>
+        </div>
+        <p class="text-left mb-0 forgot" [routerLink]="'../forgot-password'">
+          <a>¿Has olvidado tu contraseña?</a>
+        </p>
+      </form>
+      <app-primary-button
+        class="mb-3"
+        [disabled]="loginForm.invalid"
+        buttonTitle="Iniciar sesion"
+        (onClick)="login()"
+      >
+      </app-primary-button>
+      <p class="text-center mb-0 forgot" [routerLink]="'../register'">
+        ¿Aún no tienes una cuenta? <a>Créala aquí</a>
+      </p>
     </div>
+  </div>
 </div>

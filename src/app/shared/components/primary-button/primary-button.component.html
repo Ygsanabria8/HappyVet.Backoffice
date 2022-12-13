@@ -1,6 +1,8 @@
 <div class="d-flex justify-content-center alig-items-center">
     <button 
         class="btn"
+        [disabled]="disabled"
+        (click)="emitClick()"
     >
         <p class="mb-0">{{ buttonTitle }}</p>
     </button>
